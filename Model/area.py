@@ -17,4 +17,6 @@ def data_area():
         db.session.add(status)
     
     db.session.commit()
-    print("Areas inseridas com sucesso!")
+    print("Areas inseridas com sucesso!!")
+
+
