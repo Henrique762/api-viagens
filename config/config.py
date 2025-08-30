@@ -10,8 +10,8 @@ app.config['JSON_SORT_KEYS'] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:admin@localhost:5432/postgres"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config['JWT_SECRET_KEY'] = 'sua_chave_secreta_aqui'
+# app.config['JWT_SECRET_KEY'] = 'sua_chave_secreta_aqui'
 
 
 db = SQLAlchemy(app)
-jwt = JWTManager(app)
+# jwt = JWTManager(app)

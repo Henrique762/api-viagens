@@ -1,7 +1,6 @@
 from config.config import db
 from sqlalchemy import Time, Date
 
-
 class Colaborador(db.Model):
     __tablename__ = "colaborador"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
@@ -11,5 +10,5 @@ class Colaborador(db.Model):
     data_nasc = db.Column(Date, nullable=False)
     data_adm = db.Column(Date, nullable=False)
     data_dem = db.Column(Date, nullable=False)
-    status = db.Column(db.Boolean, nullable=False, default='True')
-    gestao = db.Column(db.Integer, db.ForeignKey('gestor.id'))
+    status = db.Column(db.Boolean, nullable=False, default=True)
+    gestao = db.Column(db.Integer, db.ForeignKey('gestor.id', ondelete="CASCADE"), nullable=True)
