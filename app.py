@@ -1,6 +1,7 @@
 from config.config import app, db
 from flask_cors import CORS
 from Routes.viagens import viagem_blueprint
+from Routes.aprovacao_viagem import aprovacaoviagem_blueprint
 from Model.cargo import Cargo
 from Model.area import Area
 from Model.gestor import Gestor
@@ -12,6 +13,7 @@ from Model.seed import seed_all
 
 
 app.register_blueprint(viagem_blueprint)
+app.register_blueprint(aprovacaoviagem_blueprint)
 
 with app.app_context():
     db.create_all()
