@@ -7,6 +7,8 @@ class Colaborador(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     cargo_id = db.Column(db.Integer, db.ForeignKey('cargo.id', ondelete="CASCADE"), nullable=False)
     area = db.Column(db.Integer, db.ForeignKey('area.id', ondelete="CASCADE"), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     nome = db.Column(db.String(255), nullable=False)
     data_nasc = db.Column(Date, nullable=False)
     data_adm = db.Column(Date, nullable=False)
@@ -20,6 +22,8 @@ class Colaborador(db.Model):
             "cargo_id": self.cargo_id,
             "area": self.area,
             "nome": self.nome,
+            "nome": self.nome,
+            "email": self.email,
             "data_nasc": self.data_nasc.isoformat(),
             "data_adm": self.data_adm.isoformat(),
             "data_dem": self.data_dem.isoformat(),

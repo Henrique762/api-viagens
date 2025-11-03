@@ -11,6 +11,8 @@ def criar_colaborador():
         cargo_id=dados['cargo_id'],
         area=dados['area'],
         nome=dados['nome'],
+        email=dados['email'],
+        password=dados['password'],
         data_nasc=dados['data_nasc'],
         data_adm=dados['data_adm'],
         data_dem=dados['data_dem'],
@@ -35,9 +37,14 @@ def obter_colaborador(id):
 def atualizar_colaborador(id):
     colaborador = Colaborador.query.get_or_404(id)
     dados = request.json
-    for campo in ['cargo_id', 'area', 'nome', 'data_nasc', 'data_adm', 'data_dem', 'status', 'gestao']:
+    
+    campos = ['cargo_id', 'area', 'nome', 'email', 'password', 'data_nasc', 'data_adm', 'data_dem', 'status', 'gestao']
+    
+    for campo in campos:
         if campo in dados:
             setattr(colaborador, campo, dados[campo])
+            
+
     db.session.commit()
     return jsonify(colaborador.to_dict())
 
