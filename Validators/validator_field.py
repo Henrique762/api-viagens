@@ -63,58 +63,58 @@ def validacao_data(form):
     except ValueError:
         raise ValueError("Formato de 'data' inválido. Use 'YYYY-MM-DD'.")
 
-def validacao_data_inicio(form):
-    if "data_inicio" not in form:
-        raise ValueError("Campo 'data_inicio' não informado.")
-    if form['data_inicio'] is None:
-        raise ValueError("Campo 'data_inicio' está vazio.")
+# def validacao_data_inicio(form):
+#     if "data_inicio" not in form:
+#         raise ValueError("Campo 'data_inicio' não informado.")
+#     if form['data_inicio'] is None:
+#         raise ValueError("Campo 'data_inicio' está vazio.")
 
-    if isinstance(form['data_inicio'], (datetime, date)):
-        return form['data_inicio'] if isinstance(form['data_inicio'], date) else form['data_inicio'].date()
-    try:
-        return datetime.strptime(form['data_inicio'], "%Y-%m-%d").date()
-    except ValueError:
-        raise ValueError("Formato de 'data_inicio' inválido. Use 'YYYY-MM-DD'.")
+#     if isinstance(form['data_inicio'], (datetime, date)):
+#         return form['data_inicio'] if isinstance(form['data_inicio'], date) else form['data_inicio'].date()
+#     try:
+#         return datetime.strptime(form['data_inicio'], "%Y-%m-%d").date()
+#     except ValueError:
+#         raise ValueError("Formato de 'data_inicio' inválido. Use 'YYYY-MM-DD'.")
 
-def validacao_data_fim(form):
-    if "data_fim" not in form:
-        raise ValueError("Campo 'data_fim' não informado.")
-    if form['data_fim'] is None:
-        raise ValueError("Campo 'data_fim' está vazio.")
+# def validacao_data_fim(form):
+#     if "data_fim" not in form:
+#         raise ValueError("Campo 'data_fim' não informado.")
+#     if form['data_fim'] is None:
+#         raise ValueError("Campo 'data_fim' está vazio.")
 
-    if isinstance(form['data_fim'], (datetime, date)):
-        data_fim = form['data_fim'] if isinstance(form['data_fim'], date) else form['data_fim'].date()
-    else:
-        try:
-            data_fim = datetime.strptime(form['data_fim'], "%Y-%m-%d").date()
-        except ValueError:
-            raise ValueError("Formato de 'data_fim' inválido. Use 'YYYY-MM-DD'.")
+#     if isinstance(form['data_fim'], (datetime, date)):
+#         data_fim = form['data_fim'] if isinstance(form['data_fim'], date) else form['data_fim'].date()
+#     else:
+#         try:
+#             data_fim = datetime.strptime(form['data_fim'], "%Y-%m-%d").date()
+#         except ValueError:
+#             raise ValueError("Formato de 'data_fim' inválido. Use 'YYYY-MM-DD'.")
 
-    if "data_inicio" in form:
-        data_inicio = form['data_inicio']
-        if isinstance(data_inicio, str):
-            try:
-                data_inicio = datetime.strptime(data_inicio, "%Y-%m-%d").date()
-            except ValueError:
-                raise ValueError("Formato de 'data_inicio' inválido. Use 'YYYY-MM-DD'.")
-        elif isinstance(data_inicio, datetime):
-            data_inicio = data_inicio.date()
+#     if "data_inicio" in form:
+#         data_inicio = form['data_inicio']
+#         if isinstance(data_inicio, str):
+#             try:
+#                 data_inicio = datetime.strptime(data_inicio, "%Y-%m-%d").date()
+#             except ValueError:
+#                 raise ValueError("Formato de 'data_inicio' inválido. Use 'YYYY-MM-DD'.")
+#         elif isinstance(data_inicio, datetime):
+#             data_inicio = data_inicio.date()
 
-        if data_fim < data_inicio:
-            raise ValueError("Campo 'data_fim' não pode ser menor que 'data_inicio'.")
+#         if data_fim < data_inicio:
+#             raise ValueError("Campo 'data_fim' não pode ser menor que 'data_inicio'.")
 
-    return data_fim
+#     return data_fim
 
-def validacao_motivo(form):
-    if "motivo" not in form:
-        raise ValueError("Campo 'motivo' não informado.")
-    if form['motivo'] is None:
-        raise ValueError("Campo 'motivo' está vazio.")
-    if not isinstance(form['motivo'], str):
-        raise ValueError("Campo 'motivo' deve ser uma String.")
-    if len(form['motivo']) > 255:
-        raise ValueError("Campo 'motivo' deve ter no máximo 255 caracteres.")
-    return form['motivo']
+# def validacao_motivo(form):
+#     if "motivo" not in form:
+#         raise ValueError("Campo 'motivo' não informado.")
+#     if form['motivo'] is None:
+#         raise ValueError("Campo 'motivo' está vazio.")
+#     if not isinstance(form['motivo'], str):
+#         raise ValueError("Campo 'motivo' deve ser uma String.")
+#     if len(form['motivo']) > 255:
+#         raise ValueError("Campo 'motivo' deve ter no máximo 255 caracteres.")
+#     return form['motivo']
 
 def validacao_status(form):
     if "status" not in form:
