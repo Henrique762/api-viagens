@@ -312,4 +312,3 @@ def obter_viagens_por_colaborador(id_colaborador):
         "message": "Lista de viagens recuperada com sucesso",
         "viagens": lista_viagens
     }
-
